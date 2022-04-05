@@ -1,0 +1,18 @@
+﻿@{
+    ViewData["Title"] = "Home Page";
+}
+
+<div class="text-center">
+    <h1 class="display-4">myTunes</h1>
+</div>
+
+<div>
+    <a asp-controller="Music" asp-action="Index">All Songs</a> |
+    <a asp-controller="Music" asp-action="ArtistSearch">Search By Artist</a> |
+    <a asp-controller="Music" asp-action="TopSellingSong">Leader Boards</a> |
+    <a asp-controller="Music" asp-action="UserLibrary">User Library</a> |
+    <a asp-controller="Music" asp-action="BuySongs">Buy Songs</a> |
+
+    <a asp-controller="Music" asp-action="">Blank</a> |
+
+</div>

@@ -1,0 +1,54 @@
+﻿@model IEnumerable<Final_Project_myTunes.Models.Song>
+
+
+@{
+    ViewData["Title"] = "Index";
+}
+
+<h1>All Songs</h1>
+
+
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                Song Name
+            </th>
+
+            <th>
+                Artist
+            </th>
+
+            <th>
+                Cost
+            </th>
+            <th>
+                Rating
+            </th>
+
+        </tr>
+    </thead>
+    <tbody>
+@foreach (var item in Model) {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.Name)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Artist.Name)
+            </td>
+            <td>
+                
+                $@Html.DisplayFor(modelItem => item.Cost)
+            </td>
+
+            <td>
+                 @Html.DisplayFor(modelItem => item.AverageRating)
+
+            </td>
+
+
+        </tr>
+}
+    </tbody>
+</table>

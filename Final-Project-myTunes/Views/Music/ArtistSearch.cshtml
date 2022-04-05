@@ -1,0 +1,42 @@
+﻿@model Artist
+
+<form asp-controller="Music" asp-action="ArtistSearch" method="get">
+
+    <select name="id" asp-items="@ViewBag.Artists">
+        <option>Select An Artist</option>
+    </select>
+
+    <button type="submit">
+        Search
+    </button>
+
+</form>
+
+@if(Model != null)
+{
+<h1>@Model.Name Songs</h1>
+
+ <table class="table">
+    <thead>
+        <tr>
+            <th>Name</th>
+            <th>Cost</th>
+            <th>Purchases</th>
+            <th>Rating</th>
+        </tr>
+    </thead>
+
+    <tbody>
+    @foreach (var item in Model.Songs) 
+    {
+        <tr>
+            <td>@item.Name</td>
+            <td>$@item.Cost.ToString()</td>
+            <td>@item.Purchases.Count()</td>
+            <td>@item.AverageRating</td>
+        </tr>
+    }
+    </tbody>
+
+</table>
+}

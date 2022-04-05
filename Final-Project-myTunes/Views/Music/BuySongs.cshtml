@@ -1,0 +1,58 @@
+﻿@model User
+<h1> Buy Songs </h1>
+
+<form asp-controller="Music" asp-action="BuySongs" method="get">
+    <select name="userId" asp-items="@ViewBag.Users">
+        <option>Select A User</option>
+    </select>
+
+    <button type="submit">
+        Submit
+    </button>
+
+</form>
+
+@if(Model != null)
+{
+<h5>@Model.UserName's balance: $@Model.WalletBalance</h5> 
+ <table class="table">
+    <thead>
+        <tr>
+            <th>Song</th>
+            <th>Artist</th>
+            <th>Rating</th>
+            <th>Cost</th>
+            <th></th>
+
+        </tr>
+    </thead>
+
+    <tbody>
+
+    @foreach (var item in  ViewBag.SongsToBuy) 
+     {
+            <tr>
+                <td>@item.Name</td>
+                <td>@item.Artist.Name</td>
+                <td>@item.AverageRating</td>
+                <td>$@item.Cost</td>
+
+                @*<td> <a asp-controller="Music" asp-action="BuySong" asp-route-userId="@Model.Id" asp-route-songId="@item.Id">Buy Now</a></td> *@
+
+                <td>
+                    <form method="post" asp-controller="Music" asp-action="BuySongs" 
+                    asp-route-userId="@Model.Id" asp-route-songId="@item.Id">
+                        <button type="submit">
+                            Buy Now
+                        </button>
+                        <p  style= "color:red"> @ViewBag.ErrorMessage</p>
+                    </form>
+                </td>
+
+            </tr>                
+     }    
+
+    </tbody>
+
+</table>
+}   

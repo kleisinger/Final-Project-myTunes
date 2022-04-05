@@ -1,0 +1,77 @@
+﻿@model User
+
+<form asp-controller="Music" asp-action="UserLibrary" method="get">
+    <select name="userId" asp-items="@ViewBag.Users">
+        <option>Select A User</option>
+    </select>
+
+    <button type="submit">
+        Submit
+    </button>
+
+</form>
+
+@if(Model != null)
+{
+<h1> @Model.UserName's Library</h1>
+
+
+<h6>Your Wallet Balance: $@Model.WalletBalance</h6> 
+
+<form method="post" asp-controller="Music" asp-action="AddMoney"
+asp-route-userId="@ViewBag.UserId">
+<h6>Add Money to your Wallet: </h6>
+<input name="money" type="number" min="1" max="100" step=".01" placeholder="Money"/>
+
+
+<button type="submit">
+    Submit
+</button>
+
+</form>
+
+
+
+
+
+ <table class="table">
+    <thead>
+        <tr>
+            <th>Song</th>
+            <th>Artist (From A-to-Z)</th>
+            <th>Rating</th>
+            <th></th>
+            <th></th>
+
+        </tr>
+    </thead>
+
+    <tbody>
+
+    @foreach (var item in ViewBag.SortByArtist) 
+    {
+        <tr>
+            <td>@item.Song.Name</td>
+            <td>@item.Song.Artist.Name</td>
+            <td>@item.Song.AverageRating</td>
+            <td> <a asp-controller="Music" asp-action="RateSong" asp-route-userId="@Model.Id" asp-route-songId="@item.Song.Id">Rate</a></td>
+
+            @if(@item.DateOfPurchase > @ViewBag.ExpiryDate)
+            {
+                <td>
+                 <form method="post" asp-controller="Music" asp-action="RefundSong" 
+                    asp-route-userId="@Model.Id" asp-route-songId="@item.Song.Id">
+                        <button type="submit">
+                            Refund
+                        </button>
+                    </form>
+                </td>   
+            }
+
+       </tr>            
+     }    
+
+    </tbody>
+
+</table>
+}

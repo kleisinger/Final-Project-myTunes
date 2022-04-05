@@ -1,0 +1,42 @@
+﻿@model User
+
+<form asp-controller="Music" asp-action="UserLibrary" method="get">
+    <select name="id" asp-items="@ViewBag.Users">
+        <option>Select A User</option>
+    </select>
+
+    <button type="submit">
+        Submit
+    </button>
+
+</form>
+
+@if(Model != null)
+{
+<h1> @Model.UserName's Library</h1>
+
+ <table class="table">
+    <thead>
+        <tr>
+            <th>Song</th>
+            <th>Artist (From A-to-Z)</th>
+            <th>Rating</th>
+
+        </tr>
+    </thead>
+
+    <tbody>
+
+    @foreach (var item in @ViewBag.ViewBag.SortByArtist) 
+    {
+        <tr>
+            <td>@item.Song.Name</td>
+            <td>@item.Song.Artist.Name</td>
+            <td>@item.Song.AverageRating</td>
+       </tr>            
+     }    
+
+    </tbody>
+
+</table>
+}

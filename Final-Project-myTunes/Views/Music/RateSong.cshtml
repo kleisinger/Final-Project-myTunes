@@ -1,0 +1,25 @@
+﻿@model Song
+
+<h4>Rate - @Model.Name by @Model.Artist.Name</h4>
+
+@if(@ViewBag.CurrentRating != null)
+{
+    <h6>Your Previous Rating: @ViewBag.CurrentRating</h6>
+}
+else
+{
+    <h6>You have not previously rated this song</h6>
+}
+
+<form method="post" asp-controller="Music" asp-action="RateSong"
+asp-route-userId="@ViewBag.UserId" asp-route-songId="@ViewBag.SongId">
+
+<input name="userRating" type="number" min="1" max="5" step=".1" placeholder="Rating"/>
+
+
+<button type="submit">
+    Submit
+</button>
+
+</form>
+

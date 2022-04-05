@@ -1,0 +1,97 @@
+﻿
+@model IEnumerable<Final_Project_myTunes.Models.Purchase>
+
+<h1>myTunes Leaderboards</h1>
+
+
+<div>
+    <h3>Top Selling Song:</h3>
+
+    <table class="table">
+    <thead>
+        <tr>
+            <th>Song</th>
+            <th>Artist</th>
+            <th>Purchases</th>
+            <th>Rating</th>
+        </tr>
+    </thead>
+
+    <tbody>
+
+        <tr>
+            <td>@ViewBag.MostBoughtSong.Name</td>
+            <td>@ViewBag.MostBoughtSong.Artist.Name</td>
+            <td>@ViewBag.MostBoughtSong.Purchases.Count</td>
+            <td>@ViewBag.MostBoughtSong.AverageRating</td>
+        </tr>
+
+    </tbody>
+    </table>
+</div>
+
+
+<div>
+    <h3>Top Selling Artist:</h3>
+
+    <table class="table">
+    <thead>
+        <tr>
+            <th>Artist</th>
+            <th>Purchases</th>
+        </tr>
+    </thead>
+
+    <tbody>
+
+        <tr>
+            <td>@ViewBag.TopArtist.Name</td>
+            <td>@ViewBag.PurchaseCount</td>
+        </tr>
+
+    </tbody>
+    </table>
+</div>
+
+
+
+<div>
+     <h3>Highest Rated Songs:</h3>
+         <table class="table">
+    <thead>
+        <tr>
+            <th>Song</th>
+            <th>Artist</th>
+            <th>Purchases</th>
+            <th>Rating</th>
+        </tr>
+    </thead>
+
+    <tbody>
+@foreach(var song in @ViewBag.HighestRatedSongs)
+{
+
+    <tbody>
+
+        <tr>
+            <td>@song.Name</td>
+            <td>@song.Artist.Name</td>
+            <td>@song.Purchases.Count</td>
+            <td>@song.AverageRating</td>
+        </tr>
+
+    </tbody>
+
+}
+    </table>
+</div>
+
+
+
+
+
+
+
+
+
+
