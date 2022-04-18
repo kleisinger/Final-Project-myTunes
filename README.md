@@ -2,7 +2,8 @@
 A code first ASP.NET MVC based iTunes clone, that uses an SQL database. 
 Designed for a final project in my SD-310 Relatiational Database Design course at MITT.
 
-Assignment Requirements:
+
+#Assignment Requirements:
 This system requires a set of Songs, of course, and of Artists. Each Artist produces many Songs -- each song may have only one Artist.
 
 The Users of this system may buy music to add it to their own Collection.
