@@ -1,6 +1,6 @@
 # Final-Project-myTunes
 * A code first ASP.NET MVC based iTunes clone, that uses an SQL database
-* Completed solo for my final project in my  Relatiational Database Design SD-310 course at MITT.
+* Completed solo for my final project in my  Relatiational Database Design (Backend) SD-310 course at MITT.
 
 
 ## Assignment Requirements:
